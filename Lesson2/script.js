@@ -106,6 +106,7 @@ const users = [
     age: 21,
   }
 ]
+
   users.forEach((item)=>{
   console.log(item.password)
 })
