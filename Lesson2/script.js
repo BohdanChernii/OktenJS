@@ -1,3 +1,4 @@
+//- Створити масив, наповнити його 10 елементами будь-якого типу, вивести кожен елемент в консоль
 const array = ['Vasyl', 'Andriy', 'Bohdan', 'Roman', 'Uriy', 12, 31, 21, 11, 5]
 console.log(array[0])
 console.log(array[1])
@@ -9,6 +10,9 @@ console.log(array[6])
 console.log(array[7])
 console.log(array[8])
 console.log(array[9])
+
+// - Створити 3 об'єкти які описують книги. Поля об'єкту : title ,pageCount, genre.
+// - Створити 3 об'єкти які описують книги. Поля об'єкту : title ,pageCount, genre, authors. Поле "автори" - масив. Кожен автор має поля name,age
 
 const gameOfThrones = {
   title: 'a song of ice and fire',
@@ -51,6 +55,9 @@ const jsForChildren = {
     }
   ]
 }
+
+  // - Створити масив з 10 об'єктами які описують сутніть "користувач". Поля: name, username,password. Вивести в консоль пароль кожного користувача
+
 
 const users = [
   {
