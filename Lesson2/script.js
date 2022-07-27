@@ -108,6 +108,7 @@ const users = [
 ]
 
 
+
   users.forEach((item)=>{
   console.log(item.password)
 })
