@@ -67,12 +67,16 @@ switch (weekDay) {
 //   Потрібно знайти та вивести максимальне число з тих двох .
 //   Також потрібно врахувати коли введені рівні числа.
 
-const firsValue = +prompt('Type first number')
+const firstValue = +prompt('Type first number')
 const second = +prompt('Type second number')
-if (firsValue === second) {
+if (firstValue === second) {
   console.log('the same values')
-} else {
-  console.log(Math.max(firsValue, second))
+}
+else if(firstValue >second){
+  console.log(firstValue)
+}
+else {
+  console.log(second)
 }
 
 // - є змінна х, яка може прийняти будь-яке значення (стрінг, число, undefined, null  і тд включно). Напишіть код який,
