@@ -33,14 +33,15 @@ while (x < toDo.length) {
 
 let listOfItems = ['html', 'css', 'javascript', 'mysql', 'mongodb', 'react', 'angular', 'node.js'];
 document.write('<hr/>')
+document.write('<ol>')
 for (let listItem of listOfItems) {
   document.write(`
-  <ol>
     <li>
       ${listItem}
     </li>
-  </ol>`)
+  `)
 }
+document.write('</ol>')
 
 // Використовуючи данні з масиву, за допомоги document.write та циклу
 // побудувати структуру по шаблону  Зробити адекватну стилізацію
