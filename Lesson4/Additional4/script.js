@@ -97,7 +97,7 @@ const res7 = []
 const test7 = []
 test7.length = 10
 for(let item of test7){
-  item =Math.floor(Math.random()*(10-1+1))
+  item =Math.floor(Math.random()*(10-1+1)) + 1
   res7.push(item*5)
 }
 console.log(res7)
