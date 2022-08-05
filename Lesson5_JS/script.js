@@ -63,9 +63,16 @@ console.log(res);
 console.log('////')
 
 //- створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
-const createListt = (val,arr) => [val,...arr]
+const createListt = (val, arr) => {
+  let res = [val, ...arr]
+  document.write('<ul>')
+  for(let item of res){
+    document.write(`<li>${item}</li>`)
+  }
+  document.write('</ul>')
+}
 
-res = createListt('Bohdan',[1,5,'hello', false,100,'xt',true])
+res = createListt('Bohdan', [1, 5, 'hello', false, 100, 'xt', true])
 console.log(res);
 console.log('////')
 
