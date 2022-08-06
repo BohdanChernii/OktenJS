@@ -92,12 +92,15 @@ console.log('////');
 
 //-   функція Приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"
 const changePlaces = (arr, i) => {
-  let test = [arr[i], arr[i + 1]]
-  arr[i] = test[1]
-  arr[i + 1] = test[0]
+  // let test = [arr[i], arr[i + 1]]
+  //   // arr[i] = test[1]
+  //   // arr[i + 1] = test[0]
+  let temp = arr[i]
+  arr[i] = arr[i + 1]
+  arr[i + 1] = temp
   return arr
 }
-res = changePlaces([9, 8, 4, 3, 5, 1, 2], 2)
+res = changePlaces([9, 8, 4, 3, 5, 1, 2], 0)
 console.log(res);
 console.log('////');
 
