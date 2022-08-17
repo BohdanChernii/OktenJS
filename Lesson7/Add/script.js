@@ -1,3 +1,5 @@
+// - Створити клас або функцію конструктор, за допомоги якої можна створювати об'єкти наступного вигляду.
+// Конструктор повинен приймати значення для кожної властивості, в т.ч і для властивостей внутрішніх об'єктів
 class User {
   constructor(id, name, username, email, address, phone, website, company) {
     this.id = id
@@ -62,6 +64,7 @@ user = new User(4, 'Leanne Graham', 'Bret', 'Sincere@april.biz', {
 })
 console.log(user);
 
+//-  Створити функцію конструктор / клас  який описує об'єкт тегу
 function Teg(name, description, atributeOneName, atributeOneDescription, atributeTwoName, atributeTwoDescription, atributeThreeName, atributeThreeDescription) {
   this.name = name
   this.description = description
@@ -85,7 +88,6 @@ const tegA = new Teg('<a>', 'link teg', 'href', 'Задает адрес док�
 console.log(tegA);
 const tegDiv = new Teg('<div>', 'Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого', 'align', 'Задает выравнивание содержимого тега <div>.', 'title', 'Добавляет всплывающую подсказку к содержимому.', '', '')
 console.log(tegDiv);
-
 
 
 //допка на замикання клас дати я не чіпав
@@ -116,7 +118,7 @@ const userCard = (key, balance = 100, transactionLimit = 100, historyLogs = []) 
         {operationType: 'Transaction limit change', credits: limit, operationTime: new Date})
     },
     transferCredits(credits, user) {
-      if (((balance - credits) - (credits / 100 / 2)) >= credits) {
+      if (((balance - credits) - (credits / 100 / 2)) >= credits && credits <= transactionLimit) {
         balance = (balance - credits) - (credits / 100 / 2)
         user.putCredits(credits)
       } else console.error('not much money for transferCredits')
@@ -150,10 +152,9 @@ function UseAccount(name) {
   this.name = name
   this.cards = []
   this.addCards = function (key) {
-    if(this.cards.length <=3 && (key>=1 || key<=3)){
+    if (this.cards.length <= 3 && (key >= 1 || key <= 3)) {
       this.cards.push(userCard(key))
-    }
-else console.error('key should be 1-3 and maximum 3 cards')
+    } else console.error('key should be 1-3 and maximum 3 cards')
   }
   this.getCardsByKey = function (key) {
     return this.cards.find(item => item.getCardOptions().key === key)
@@ -163,13 +164,16 @@ else console.error('key should be 1-3 and maximum 3 cards')
 let user1 = new UseAccount('Bohdan')
 user1.addCards(1)
 user1.addCards(2)
-let card1= user1.getCardsByKey(1)
+let card1 = user1.getCardsByKey(1)
 let card2 = user1.getCardsByKey(2)
 card1.putCredits(100)
 card2.putCredits(200)
+card2.putCredits(200)
+card2.putCredits(200)
+card2.putCredits(200)
 console.log(card1.getCardOptions());
 console.log(card2.getCardOptions());
-card1.transferCredits(50,card2)
+card1.transferCredits(50, card2)
 console.log(card1.getCardOptions());
 console.log(card2.getCardOptions());
 
