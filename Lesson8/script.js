@@ -192,7 +192,7 @@ const getClasses = () => {
   for (let item of rules){
     res.push(item.className)
   }
-  console.log(res);
+ return res
 }
 console.log(getClasses());
 
