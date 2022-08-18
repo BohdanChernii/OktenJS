@@ -1,130 +1,130 @@
-// - Створити клас або функцію конструктор, за допомоги якої можна створювати об'єкти наступного вигляду.
-// Конструктор повинен приймати значення для кожної властивості, в т.ч і для властивостей внутрішніх об'єктів
-class User {
-  constructor(id, name, username, email, address, phone, website, company) {
-    this.id = id
-    this.name = name
-    this.username = username
-    this.email = email
-    this.address = address
-    this.phone = phone
-    this.website = website
-    this.company = company
-  }
-}
-
-
-const company = {
-  name: 'Romaguera-Crona',
-  catchPhrase: 'Multi-layered client-server neural-net',
-  bs: 'harness real-time e-markets'
-}
-let user = new User(1, 'Leanne Graham', 'Bret', 'Sincere@april.biz', {
-  street: 'Kulas Light',
-  suite: 'Apt. 556',
-  city: 'Gwenborough',
-  zipcode: '92998-3874',
-  geo: {lat: '-37.3159', lng: '81.1496'}
-}, '1-770-736-8031 x56442', 'hildegard.org', {
-  name: 'Romaguera-Crona',
-  catchPhrase: 'Multi-layered client-server neural-net', bs: 'harness real-time e-markets'
-})
-console.log(user);
-user = new User(2, 'Leanne Graham', 'Bret', 'Sincere@april.biz', {
-  street: 'Kulas Light',
-  suite: 'Apt. 556',
-  city: 'Gwenborough',
-  zipcode: '92998-3874',
-  geo: {lat: '-37.3159', lng: '81.1496'}
-}, '1-770-736-8031 x56442', 'hildegard.org', {
-  name: 'Romaguera-Crona',
-  catchPhrase: 'Multi-layered client-server neural-net', bs: 'harness real-time e-markets'
-})
-console.log(user);
-user = new User(3, 'Leanne Graham', 'Bret', 'Sincere@april.biz', {
-  street: 'Kulas Light',
-  suite: 'Apt. 556',
-  city: 'Gwenborough',
-  zipcode: '92998-3874',
-  geo: {lat: '-37.3159', lng: '81.1496'}
-}, '1-770-736-8031 x56442', 'hildegard.org', {
-  name: 'Romaguera-Crona',
-  catchPhrase: 'Multi-layered client-server neural-net', bs: 'harness real-time e-markets'
-})
-console.log(user);
-user = new User(4, 'Leanne Graham', 'Bret', 'Sincere@april.biz', {
-  street: 'Kulas Light',
-  suite: 'Apt. 556',
-  city: 'Gwenborough',
-  zipcode: '92998-3874',
-  geo: {lat: '-37.3159', lng: '81.1496'}
-}, '1-770-736-8031 x56442', 'hildegard.org', {
-  name: 'Romaguera-Crona',
-  catchPhrase: 'Multi-layered client-server neural-net', bs: 'harness real-time e-markets'
-})
-console.log(user);
-
-//-  Створити функцію конструктор / клас  який описує об'єкт тегу
-function Teg(name, description, atributeOneName, atributeOneDescription, atributeTwoName, atributeTwoDescription, atributeThreeName, atributeThreeDescription) {
-  this.name = name
-  this.description = description
-  this.atributes = [
-    {
-      atributeOneName,
-      atributeOneDescription
-    },
-    {
-      atributeTwoName,
-      atributeTwoDescription
-    },
-    {
-      atributeThreeName,
-      atributeThreeDescription
-    }
-  ]
-}
-
-const tegA = new Teg('<a>', 'link teg', 'href', 'Задает адрес документа, на который следует перейти.', 'name', 'Устанавливает имя якоря внутри документа.', 'target', 'Имя окна или фрейма, куда браузер будет загружать документ.')
-console.log(tegA);
-const tegDiv = new Teg('<div>', 'Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого', 'align', 'Задает выравнивание содержимого тега <div>.', 'title', 'Добавляет всплывающую подсказку к содержимому.', '', '')
-console.log(tegDiv);
+// // - Створити клас або функцію конструктор, за допомоги якої можна створювати об'єкти наступного вигляду.
+// // Конструктор повинен приймати значення для кожної властивості, в т.ч і для властивостей внутрішніх об'єктів
+// class User {
+//   constructor(id, name, username, email, address, phone, website, company) {
+//     this.id = id
+//     this.name = name
+//     this.username = username
+//     this.email = email
+//     this.address = address
+//     this.phone = phone
+//     this.website = website
+//     this.company = company
+//   }
+// }
+//
+//
+// const company = {
+//   name: 'Romaguera-Crona',
+//   catchPhrase: 'Multi-layered client-server neural-net',
+//   bs: 'harness real-time e-markets'
+// }
+// let user = new User(1, 'Leanne Graham', 'Bret', 'Sincere@april.biz', {
+//   street: 'Kulas Light',
+//   suite: 'Apt. 556',
+//   city: 'Gwenborough',
+//   zipcode: '92998-3874',
+//   geo: {lat: '-37.3159', lng: '81.1496'}
+// }, '1-770-736-8031 x56442', 'hildegard.org', {
+//   name: 'Romaguera-Crona',
+//   catchPhrase: 'Multi-layered client-server neural-net', bs: 'harness real-time e-markets'
+// })
+// console.log(user);
+// user = new User(2, 'Leanne Graham', 'Bret', 'Sincere@april.biz', {
+//   street: 'Kulas Light',
+//   suite: 'Apt. 556',
+//   city: 'Gwenborough',
+//   zipcode: '92998-3874',
+//   geo: {lat: '-37.3159', lng: '81.1496'}
+// }, '1-770-736-8031 x56442', 'hildegard.org', {
+//   name: 'Romaguera-Crona',
+//   catchPhrase: 'Multi-layered client-server neural-net', bs: 'harness real-time e-markets'
+// })
+// console.log(user);
+// user = new User(3, 'Leanne Graham', 'Bret', 'Sincere@april.biz', {
+//   street: 'Kulas Light',
+//   suite: 'Apt. 556',
+//   city: 'Gwenborough',
+//   zipcode: '92998-3874',
+//   geo: {lat: '-37.3159', lng: '81.1496'}
+// }, '1-770-736-8031 x56442', 'hildegard.org', {
+//   name: 'Romaguera-Crona',
+//   catchPhrase: 'Multi-layered client-server neural-net', bs: 'harness real-time e-markets'
+// })
+// console.log(user);
+// user = new User(4, 'Leanne Graham', 'Bret', 'Sincere@april.biz', {
+//   street: 'Kulas Light',
+//   suite: 'Apt. 556',
+//   city: 'Gwenborough',
+//   zipcode: '92998-3874',
+//   geo: {lat: '-37.3159', lng: '81.1496'}
+// }, '1-770-736-8031 x56442', 'hildegard.org', {
+//   name: 'Romaguera-Crona',
+//   catchPhrase: 'Multi-layered client-server neural-net', bs: 'harness real-time e-markets'
+// })
+// console.log(user);
+//
+// //-  Створити функцію конструктор / клас  який описує об'єкт тегу
+// function Teg(name, description, atributeOneName, atributeOneDescription, atributeTwoName, atributeTwoDescription, atributeThreeName, atributeThreeDescription) {
+//   this.name = name
+//   this.description = description
+//   this.atributes = [
+//     {
+//       atributeOneName,
+//       atributeOneDescription
+//     },
+//     {
+//       atributeTwoName,
+//       atributeTwoDescription
+//     },
+//     {
+//       atributeThreeName,
+//       atributeThreeDescription
+//     }
+//   ]
+// }
+//
+// const tegA = new Teg('<a>', 'link teg', 'href', 'Задает адрес документа, на который следует перейти.', 'name', 'Устанавливает имя якоря внутри документа.', 'target', 'Имя окна или фрейма, куда браузер будет загружать документ.')
+// console.log(tegA);
+// const tegDiv = new Teg('<div>', 'Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого', 'align', 'Задает выравнивание содержимого тега <div>.', 'title', 'Добавляет всплывающую подсказку к содержимому.', '', '')
+// console.log(tegDiv);
 
 
 //допка на замикання клас дати я не чіпав
 
-const userCard = (key, balance = 100, transactionLimit = 100, historyLogs = []) => {
-
+const userCard = (key, ) => {
+const card ={balance : 100, transactionLimit : 100, historyLogs : []}
   return {
-    ['balance']: balance,
-    ['transactionLimit']: transactionLimit,
-    ['historyLogs']: historyLogs,
+    // ['balance']: balance,
+    // ['transactionLimit']: transactionLimit,
+    // ['historyLogs']: historyLogs,
 
     putCredits(credits) {
-      balance += credits
-      historyLogs.push(
+      card.balance += credits
+      card.historyLogs.push(
         {operationType: 'Received credits', credits: credits, operationTime: new Date})
     },
     takeCred(take) {
-      if (balance >= take && transactionLimit >= take) {
-        balance -= take
-        historyLogs.push(
+      if (card.balance >= take && card.transactionLimit >= take) {
+        card.balance -= take
+        card.historyLogs.push(
           {operationType: 'Withdrawal of credits', credits: take, operationTime: new Date})
       } else console.error('not much money')
 
     },
     setTransactionLimit(limit) {
-      transactionLimit = limit
-      historyLogs.push(
+      card.transactionLimit = limit
+      card.historyLogs.push(
         {operationType: 'Transaction limit change', credits: limit, operationTime: new Date})
     },
     transferCredits(credits, user) {
-      if (((balance - credits) - (credits / 100 / 2)) >= credits && credits <= transactionLimit) {
-        balance = (balance - credits) - (credits / 100 / 2)
+      if (((card.balance - credits) - (credits / 100 / 2)) >= credits && credits <= card.transactionLimit) {
+        card.balance = (card.balance - credits) - (credits / 100 / 2)
         user.putCredits(credits)
       } else console.error('not much money for transferCredits')
     },
     getCardOptions() {
-      return {key: key, balance, transactionLimit, historyLogs}
+      return {key: key,...card}
     },
   }
 }
