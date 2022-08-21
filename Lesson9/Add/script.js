@@ -275,3 +275,36 @@ for (let element of usersList) {
 }
 body.appendChild(info)
 
+// за допомоги рекурсії перебрати структуру сторінки. зробити об'єкт, всі заголовки покласти в (масив) характеристику headings,всі параграфи покласти в характеристику (масив) paragraphs
+let tags = {
+  headings:[],
+  paragraphs:[],
+}
+let sortBlocks = (page)=>{
+  if(page.tagName === 'P'){
+    tags.paragraphs.push(page)
+  }
+  else if(page.tagName.includes('H')){
+    tags.headings.push(page)
+  }
+  console.log(page);
+  let blocks = page.children
+  if(page.children !==0){
+    for (let element of blocks){
+      sortBlocks(element)
+    }
+  }
+}
+sortBlocks(body)
+console.log(tags);
+
+// зробити div contenteditable ввести будь яке ціле слово. та при натисканні табуляції перетворити його на подвійний тег
+// asd ->tab-> <asd></asd>
+document.addEventListener('keydown', function(event)
+{
+  if (9) {
+    let parentBlock = document.querySelector('.contenteditable')
+    let child = document.createElement(parentBlock.innerText)
+    parentBlock.appendChild(child)
+  }
+});

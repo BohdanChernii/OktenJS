@@ -351,3 +351,5 @@ createTable.addEventListener('click', (e) => {
   }
 })
 body.appendChild(table)
+
+
