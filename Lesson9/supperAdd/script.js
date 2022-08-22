@@ -201,31 +201,41 @@ nextBtn.className = 'next'
 slider.appendChild(nextBtn)
 body.appendChild(slider)
 let next = 0
-
+let prev = 0
 nextBtn.addEventListener("click", (e) => {
-  if (next >= images.length -2 ) {
-    e.target.disabled = true
-  }
 
+  if (next === images.length - 1) {
+    next = -1
+    sliderContent.style.marginLeft = '0px'
+  }
   prevBtn.disabled = false
   next += 1
+
   sliderContent.style.marginLeft = next * (-200) + 'px'
+
 })
-prevBtn.disabled = true
+
+
 prevBtn.addEventListener("click", (e) => {
-  if (next <= 1) {
-    e.target.disabled = true
+  prev += 1
+    sliderContent.style.marginLeft = ((images.length - prev) * (-200)) + 'px'
+
+  if (prev === images.length) {
+    prev = 0
   }
-  nextBtn.disabled = false
-  next -= 1
-  sliderContent.style.marginLeft = next * (-200) + 'px'
+  if (next>=0){
+    next -= 1
+  }
+  if (next<0){
+    next += 1
+  }
 })
 
 // Завдання важке для розуміння, але дуже легке в реалізації. Тут треба буде погуглити
 // *** При виділені сегменту тексту на сторінці він стає жирний/курсивний/або якось іншим способом змінює свій стан
 let focusBlock = document.createElement('p')
 focusBlock.innerText = 'Focus Block'
-focusBlock.addEventListener('mouseup',()=>{
+focusBlock.addEventListener('mouseup', () => {
   focusBlock.style.fontWeight = 'bold'
 })
 body.appendChild(focusBlock)
