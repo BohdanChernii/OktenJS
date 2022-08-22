@@ -284,7 +284,7 @@ let sortBlocks = (page)=>{
   if(page.tagName === 'P'){
     tags.paragraphs.push(page)
   }
-  else if(page.tagName.includes('H')){
+  else if(page.tagName ==='H1'||page.tagName ==='H2'|| page.tagName ==='H3'){
     tags.headings.push(page)
   }
   console.log(page);
