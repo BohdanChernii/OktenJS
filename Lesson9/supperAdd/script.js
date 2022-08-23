@@ -116,7 +116,7 @@ document.write('<hr>')
 // -- взять массив пользователей
 let usersWithAddress = [
   {id: 1, name: 'vasya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
-  {id: 2, name: 'petya', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 1}},
+  {id: 2, name: 'petya', age: 28, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 1}},
   {id: 3, name: 'kolya', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 121}},
   {id: 4, name: 'olya', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 90}},
   {id: 5, name: 'max', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 115}},
@@ -128,51 +128,42 @@ let usersWithAddress = [
   {id: 11, name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
 ];
 // - Создать три чекбокса. Каждый из них активирует фильтр для выше указаного массива. Фильтры могут работать как вместе так и по отдельности.
-// 1й - отфильтровывает пользователей со статусом false (осталяет со статусом false)
-let res
+
+let res = []
 let filterUsers = document.createElement('div')
+
 let checkBox1 = document.createElement('input')
 checkBox1.type = 'checkbox'
 filterUsers.appendChild(checkBox1)
-checkBox1.addEventListener('change', () => {
-  res = usersWithAddress.filter(item => item.status === false)
-  for (let item of res) {
-    let user = document.createElement('div')
-    user.innerText = `${item.name} ${item.age} ${item.status} address: ${item.address.city},${item.address.street}, ${item.address.number}`
-    filterUsers.appendChild(user)
-  }
-})
 
-// 2й - оставляет старше 29 лет включительно
 let checkBox2 = document.createElement('input')
 checkBox2.type = 'checkbox'
 filterUsers.appendChild(checkBox2)
-checkBox2.addEventListener('change', () => {
-  res = usersWithAddress.filter(item => item.age > 29)
-  for (let item of res) {
-    let user = document.createElement('div')
-    user.innerText = `${item.name} ${item.age} ${item.status} address: ${item.address.city},${item.address.street}, ${item.address.number}`
-    filterUsers.appendChild(user)
-  }
-  console.log(res);
-  console.log(checkBox2.value);
-})
-// 3й - оставляет тех у кого город киев
+
 let checkBox3 = document.createElement('input')
 checkBox3.type = 'checkbox'
 filterUsers.appendChild(checkBox3)
-checkBox3.addEventListener('change', () => {
-  res = usersWithAddress.filter(item => item.address.city === 'Kyiv')
+
+let buttonFilter = document.createElement('button')
+buttonFilter.innerText = 'Filter'
+filterUsers.appendChild(buttonFilter)
+// 1й - отфильтровывает пользователей со статусом false (осталяет со статусом false)
+// 2й - оставляет старше 29 лет включительно
+// 3й - оставляет тех у кого город киев
+buttonFilter.addEventListener("click", () => {
+  res = usersWithAddress.filter(item => (checkBox1.checked ? item.status === false : true) && (checkBox2.checked ? item.age > 29 : true) && (checkBox3.checked ? item.address.city === 'Kyiv' : true))
   for (let item of res) {
     let user = document.createElement('div')
     user.innerText = `${item.name} ${item.age} ${item.status} address: ${item.address.city},${item.address.street}, ${item.address.number}`
     filterUsers.appendChild(user)
   }
-  console.log(checkBox3.value);
+  res = []
 })
+
+
 // Данные выводить в документ
 
-body.appendChild(filterUsers)
+document.body.appendChild(filterUsers)
 
 // *****(Прям овердоз с рекурсией) Создать функцию которая принимает какой-либо элемент DOM-структуры .Функция создает в боди 2 кнопки (назад/вперед)
 // при нажатии вперед, вы переходите к дочернему элементу, при еще одном нажатии на "вперед", вы переходите к следующему дочернему элементу (лежащему на одном уровне)
@@ -210,35 +201,39 @@ nextBtn.addEventListener("click", (e) => {
   }
   prevBtn.disabled = false
   next += 1
-
   sliderContent.style.marginLeft = next * (-200) + 'px'
-
 })
 
 
 prevBtn.addEventListener("click", (e) => {
   prev += 1
-    sliderContent.style.marginLeft = ((images.length - prev) * (-200)) + 'px'
-
+  sliderContent.style.marginLeft = ((images.length - prev) * (-200)) + 'px'
   if (prev === images.length) {
     prev = 0
   }
-  if (next>=0){
+  if (next >= 0) {
     next -= 1
   }
-  if (next<0){
+  if (next < 0) {
     next += 1
   }
 })
 
 // Завдання важке для розуміння, але дуже легке в реалізації. Тут треба буде погуглити
 // *** При виділені сегменту тексту на сторінці він стає жирний/курсивний/або якось іншим способом змінює свій стан
+
 let focusBlock = document.createElement('p')
 focusBlock.innerText = 'Focus Block'
-focusBlock.addEventListener('mouseup', () => {
-  focusBlock.style.fontWeight = 'bold'
-})
 body.appendChild(focusBlock)
+function getText() {
+  let selection
+  if (document.getSelection) {
+    selection = document.getSelection().toString();
+    focusBlock.innerText = selection
+    focusBlock.style.fontWeight = 'bold'
+    console.log(selection);
+  }
+}
 
-
+focusBlock.addEventListener('mouseup', getText)
 
