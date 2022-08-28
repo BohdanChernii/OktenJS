@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
 body{
     max-width: 1400px;
     margin: auto;
@@ -8,6 +13,22 @@ body{
     display: flex;
     flex-wrap: wrap;
     gap: 10%;
+}
+.userInfo{
+    border: 1px solid black;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: orange;
+    gap: 5%;
+}
+.userInfo>p{
+width: 150px;
+margin: auto;
+    margin-top:2%;
+
+    color: white;
 }
 .getComments{
     width: 100%;

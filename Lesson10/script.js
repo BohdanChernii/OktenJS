@@ -14,66 +14,99 @@
 // І так далі
 
 //через than/catch
-// function haveABreakfast(done){
-//   return new Promise((resolve,reject) =>{
-//     setTimeout(()=>{
-//       if(done){
-//         resolve('great you have ate');
-//       }else{
-//         reject('go to eat')
-//       }
-//     },Math.random()*1000)
-//   })
-// }
+function haveABreakfast(done) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (done) {
+        resolve('great you have ate');
+      } else {
+        reject('go to eat')
+      }
+    }, Math.random() * 1000)
+  })
+}
+
+function study(done) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (done) {
+        resolve('great student');
+      } else {
+        reject('come to study')
+      }
+    }, Math.random() * 1000)
+  })
+}
+
+function watchEventLoop(done) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (done) {
+        resolve('great you are Event Loop huru');
+      } else {
+        reject('come to learn Event Loop')
+      }
+    }, Math.random() * 1000)
+  })
+}
+
+
+function goToGym(done) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (done) {
+        resolve('great you are machine');
+      } else {
+        reject('go to gym slave')
+      }
+    }, Math.random() * 1000)
+  })
+}
+
+function haveADiner(done) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (done) {
+        resolve('great you ate');
+      } else {
+        reject('go to eat diner')
+      }
+    }, Math.random() * 1000)
+  })
+}
+
+async function day(done){
+  try{
+    const breakfast = await haveABreakfast(done)
+    console.log(breakfast);
+    const student = await study(done)
+    console.log(student);
+    const huru = await watchEventLoop(done)
+    console.log(huru);
+    const sport = await goToGym(done)
+    console.log(sport);
+    const diner = await haveADiner(done)
+    console.log(diner);
+  }catch (e){
+    console.log(e);
+  }
+}
+day(false)
+// Promise.all([haveABreakfast(false).catch(()=>{}), study(true), watchEventLoop(true), goToGym(true), haveADiner(true)])
+//   .then(value => {
+//     console.log(value);
+//   }).catch(e => console.log(e))
+
+ // Promise.allSettled([haveABreakfast(false), study(true), watchEventLoop(true), goToGym(true), haveADiner(true)])
+ //   .then(value => {
+ //     console.log(value);
+ //   })
 //
-// function study(done){
-//   return new Promise((resolve,reject) =>{
-//     setTimeout(()=>{
-//       if(done){
-//         resolve('great student');
-//       }else{
-//         reject('come to study')
-//       }
-//     },Math.random()*1000)
+// Promise.race([haveABreakfast(true), study(true), watchEventLoop(true), goToGym(true), haveADiner(true)])
+//   .then(value => {
+//     console.log(value);
 //   })
-// }
-//
-// function watchEventLoop(done){
-//   return new Promise((resolve,reject) =>{
-//     setTimeout(()=>{
-//       if(done){
-//         resolve('great you are Event Loop huru');
-//       }else{
-//         reject('come to learn Event Loop')
-//       }
-//     },Math.random()*1000)
-//   })
-// }
-//
-//
-// function goToGym(done){
-//   return new Promise((resolve,reject) =>{
-//     setTimeout(()=>{
-//       if(done){
-//         resolve('great you are machine');
-//       }else{
-//         reject('go to gym slave')
-//       }
-//     },Math.random()*1000)
-//   })
-// }
-//
-// function haveADiner(done){
-//   return new Promise((resolve,reject) =>{
-//     setTimeout(()=>{
-//       if(done){
-//         resolve('great you ate');
-//       }else{
-//         reject('go to eat diner')
-//       }
-//     },Math.random()*1000)
-//   })
-// }
+
 // haveABreakfast(true).then(done=>{
 //   console.log(done)
 //   return study(done)
@@ -89,93 +122,93 @@
 // }).then(done=> console.log(done)).catch(reason => {
 //   console.log(reason);
 // })
-//через callback hell
-function haveABreakfast(isDone, cb) {
-  setTimeout(() => {
-    if (isDone) {
-      cb(null, 'great you have eat your breakfast')
-    } else {
-      cb('Eat your breakfast')
-    }
-  }, Math.random() * 1000)
-}
+//через callback hell(фу фу фу)
+// function haveABreakfast(isDone, cb) {
+//   setTimeout(() => {
+//     if (isDone) {
+//       cb(null, 'great you have eat your breakfast')
+//     } else {
+//       cb('Eat your breakfast')
+//     }
+//   }, Math.random() * 1000)
+// }
+//
+// function study(isDone, cb) {
+//   setTimeout(() => {
+//     if (isDone) {
+//       cb(null, 'great student')
+//     } else {
+//       cb('Go to study')
+//     }
+//   }, Math.random() * 1000)
+// }
+//
+// function watchEventLoop(isDone, cb) {
+//   setTimeout(() => {
+//     if (isDone) {
+//       cb(null, 'you have watch the Event Loop ')
+//     } else {
+//       cb('come to learn Event Loop')
+//     }
+//   }, Math.random() * 1000)
+// }
+//
+// function goToGym(isDone, cb) {
+//   setTimeout(() => {
+//     if (isDone) {
+//       cb(null, 'great you are machine');
+//     } else {
+//       cb('go to gym slave')
+//     }
+//   }, Math.random() * 1000)
+//
+// }
+//
+// function haveADiner(isDone, cb) {
+//   setTimeout(() => {
+//     if (isDone) {
+//       cb(null, 'great you ate diner');
+//     } else {
+//       cb('go to eat diner')
+//     }
+//   }, Math.random() * 1000)
+// }
 
-function study(isDone, cb) {
-  setTimeout(() => {
-    if (isDone) {
-      cb(null, 'great student')
-    } else {
-      cb('Go to study')
-    }
-  }, Math.random() * 1000)
-}
-
-function watchEventLoop(isDone, cb) {
-  setTimeout(() => {
-    if (isDone) {
-      cb(null, 'you have watch the Event Loop ')
-    } else {
-      cb('come to learn Event Loop')
-    }
-  }, Math.random() * 1000)
-}
-
-function goToGym(isDone, cb) {
-  setTimeout(() => {
-    if (isDone) {
-      cb(null, 'great you are machine');
-    } else {
-      cbt('go to gym slave')
-    }
-  }, Math.random() * 1000)
-
-}
-
-function haveADiner(isDone, cb) {
-  setTimeout(() => {
-    if (isDone) {
-      cb(null, 'great you ate diner');
-    } else {
-      cb('go to eat diner')
-    }
-  }, Math.random() * 1000)
-}
-
-haveABreakfast(true, (err, message) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(message);
-    study(true, (err, message) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(message);
-        watchEventLoop(true, (err, message) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log(message);
-            goToGym(true, (err, message) => {
-              if (err) {
-                console.log(err);
-              } else {
-                console.log(message);
-                haveADiner(true, (err, message) => {
-                  if (err) {
-                    console.log(err);
-                  } else {
-                    console.log(message);
-                  }
-                })
-              }
-            })
-          }
-        })
-      }
-    })
-  }
-})
+// haveABreakfast(true, (err, message) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(message);
+//     study(true, (err, message) => {
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         console.log(message);
+//         watchEventLoop(true, (err, message) => {
+//           if (err) {
+//             console.log(err);
+//           } else {
+//             console.log(message);
+//             goToGym(true, (err, message) => {
+//               if (err) {
+//                 console.log(err);
+//               } else {
+//                 console.log(message);
+//                 haveADiner(true, (err, message) => {
+//                   if (err) {
+//                     console.log(err);
+//                   } else {
+//                     console.log(message);
+//                   }
+//                 })
+//               }
+//             })
+//           }
+//         })
+//       }
+//     })
+//   }
+// })
 
 //// Реалізувати друкарську машинку.
 //   У вас є текст "Hello World".
@@ -211,16 +244,16 @@ wait(string)
 // є масив -
 let users = [
   {name: 'vasya', age: 31, status: false},
-  {name: 'petya', age: 30, status: true},
-  {name: 'kolya', age: 29, status: true},
+  {name: 'petya', age: 30, status: false},
+  {name: 'kolya', age: 29, status: false},
   {name: 'olya', age: 28, status: false},
-  {name: 'max', age: 30, status: true},
+  {name: 'max', age: 30, status: false},
   {name: 'anya', age: 31, status: false},
   {name: 'oleg', age: 28, status: false},
-  {name: 'andrey', age: 29, status: true},
-  {name: 'masha', age: 30, status: true},
+  {name: 'andrey', age: 29, status: false},
+  {name: 'masha', age: 30, status: false},
   {name: 'olya', age: 31, status: false},
-  {name: 'max', age: 31, status: true}
+  {name: 'max', age: 31, status: false}
 ];
 
 // створити під кожен об'єкт свій блок з конопкою "додати до улюблених" при натисканні на яку об'єкт потрапляє до масиву favorites улюблених обраних об'єктів в локальному сховищі.
@@ -294,7 +327,10 @@ document.write('<br>')
 // EXIT | AXET -> false
 // GOOD | DOGO -> true
 //
-// _______________________________________________________________
+const anogram = (str) => str.split('').sort().join('')
+const compare = (first, second) => anogram(first) === anogram(second)
+
+console.log(compare('ANAGRAM', 'MGANRAA'));
 //
 // Точная степень двойки
 // Дано натуральное число N.
@@ -345,8 +381,15 @@ console.log(findAllOnes(numberList));
 // Вирівняти багаторівневий масив в однорівневий
 //   [1,3, ['Hello, 'Wordd', [9,6,1]], ['oops'], 9] -> [1, 3, 'Hello, 'Wordd', 9, 6, 1, 'oops', 9]
 // flat використовувати заборонено.
-
-//   ___________________________________________________________________
+// const flatFunction = (arr)=>{
+//   console.log(arr);
+//   if(arr.length !== 0){
+//     for(let item of arr){
+//       flatFunction(item)
+//     }
+//   }
+// }
+// console.log(flatFunction([1, 3, ['Hello', 'Wordd', [9, 6, 1]], ['oops'], 9]));
 //
 // Знайти набільший елемент в масиві за допомогою reduce
 //   [1,6,9,0,17,88,4,7] -> 88

@@ -7,35 +7,70 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-      body{
+      *{
+          margin: 0;
+          box-sizing: border-box;
+      }
+      body {
           max-width: 1400px;
           margin: auto;
       }
-      .postInfo{
-          margin-top: 2%;
-          border: 1px solid black;
-      }
-      .comments{
+
+      .postInfo {
           display: flex;
-          flex-wrap:wrap;
+          padding-top: 8%;
+          flex-direction: column;
+          border: 1px solid black;
+          align-items: center;
+          height: 600px;
+      }
+
+      .postInfo > p {
+          line-height: 50px;
+          font-size: 25px;
+          font-family: Roboto,'sans-serif';
+      }
+
+      .postInfo > p:hover {
+          background-color: rgba(223 231 200);
+          -webkit-transition: background-color 1s ease-out 0.3s;
+          -moz-transition: background-color 1s ease-out 0.3s;
+          -o-transition: background-color 1s ease-out 0.3s;
+          transition: background-color 1s ease-out 0.3s;
+      }
+.item{
+    height: 50px;
+}
+      .body {
+          display: block;
+          height: 100px;
+      }
+
+      .comments {
+          display: flex;
+          flex-wrap: wrap;
           gap: 1%;
       }
-    .comments__comment{
-        width: 24%;
-        height: 250px;
-        border: 1px solid black;
-        margin: auto;
-        margin-top: 1%;
-    }
+
+      .comments__comment {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          flex-wrap: wrap;
+          width: 300px;
+          height: 300px;
+          box-sizing: border-box;
+          border: 1px solid black;
+          margin: auto;
+          margin-top: 1%;
+      }
   </style>
 </head>
 <body>
 <section class="postInfo">
   <h1>Post Information</h1>
-  <h3 class="postInfoTitle"></h3>
-  <p class="postInfo__userId"></p>
-  <p class="postInfo__id"></p>
-  <p class="postInfo__text"></p>
 </section>
 <h1 class="commentsTitle">Comments</h1>
 <section class="comments">
@@ -44,27 +79,37 @@
   let post_id = window.location.search.split('?').join('')
   const post = JSON.parse(localStorage.getItem('post'));
   console.log(post);
-  document.querySelector('.postInfoTitle').innerText ='Post title: ' + post.title
-  document.querySelector('.postInfo__userId').innerText ='User ID: '+  post.userId
-  document.querySelector('.postInfo__id').innerText = 'Post ID: ' + post.id
-  document.querySelector('.postInfo__text').innerText = 'Post Text: ' + post.body
+  const postInfo = (info) => {
+    console.log(info);
+    for (const post in info) {
+      if (typeof info[post] !== "object") {
+        const p = document.createElement('p')
+        p.innerText = `${post} - ${info[post]}`
+        p.classList.add(post,'item')
+        document.querySelector('.postInfo').appendChild(p)
+      } else {
+        postInfo(info[post])
+      }
+    }
+  }
+  postInfo(post)
 
-  fetch(`https://jsonplaceholder.typicode.com/posts/${post_id}/comments`).then(res=>res.json())
-    .then(res=> res.map(item=>{
-      const comment = document.createElement('div')
-      comment.className='comments__comment'
+  fetch(`https://jsonplaceholder.typicode.com/posts/${post_id}/comments`).then(res => res.json())
+    .then(res => res.map(item => {
+        const comment = document.createElement('div')
+        comment.className = 'comments__comment'
 
-      const commentName = document.createElement('p')
-      commentName.innerText = item.name
+        const commentName = document.createElement('p')
+        commentName.innerText = item.name
 
-      const commentBody =document.createElement('p')
-      commentBody.innerText = item.body
+        const commentBody = document.createElement('p')
+        commentBody.innerText = item.body
 
-      const commentEmail = document.createElement('p')
-      commentEmail.innerText = item.email
-      comment.append(commentName,commentBody,commentEmail)
+        const commentEmail = document.createElement('p')
+        commentEmail.innerText = item.email
+        comment.append(commentName, commentBody, commentEmail)
 
-      document.querySelector('.comments').appendChild(comment)
+        document.querySelector('.comments').appendChild(comment)
       }
     ))
 

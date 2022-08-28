@@ -13,7 +13,6 @@ body{
 }
 .users__user{
     width: 40%;
-    height: 150px;
     margin: 4%;
     border: 1px solid black;
     padding: 4%;
