@@ -7,10 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-      *{
+      * {
           margin: 0;
           box-sizing: border-box;
       }
+
       body {
           max-width: 1400px;
           margin: auto;
@@ -18,18 +19,13 @@
 
       .postInfo {
           display: flex;
-          padding-top: 8%;
           flex-direction: column;
-          border: 1px solid black;
           align-items: center;
-          height: 600px;
+          justify-content: center;
+          border: 1px solid black;
+          height: 400px;
       }
 
-      .postInfo > p {
-          line-height: 50px;
-          font-size: 25px;
-          font-family: Roboto,'sans-serif';
-      }
 
       .postInfo > p:hover {
           background-color: rgba(223 231 200);
@@ -38,9 +34,13 @@
           -o-transition: background-color 1s ease-out 0.3s;
           transition: background-color 1s ease-out 0.3s;
       }
-.item{
-    height: 50px;
-}
+
+      .item {
+          height: 20px;
+          margin: 15px 0;
+          font-size: 20px;
+      }
+
       .body {
           display: block;
           height: 100px;
@@ -66,6 +66,20 @@
           margin: auto;
           margin-top: 1%;
       }
+
+      .post-name {
+          font-weight: bold;
+          font-size: 18px;
+          text-align: center;
+          height: 20px;
+      }
+
+      .post-body {
+          height: 150px;
+          width: 250px;
+          margin-top: 20px;
+      }
+
   </style>
 </head>
 <body>
@@ -76,16 +90,16 @@
 <section class="comments">
 </section>
 <script>
-  let post_id = window.location.search.split('?').join('')
+  let post_id = window.location.search.split('?id=').join('')
+  console.log(post_id);
   const post = JSON.parse(localStorage.getItem('post'));
-  console.log(post);
   const postInfo = (info) => {
     console.log(info);
     for (const post in info) {
       if (typeof info[post] !== "object") {
         const p = document.createElement('p')
         p.innerText = `${post} - ${info[post]}`
-        p.classList.add(post,'item')
+        p.classList.add(post, 'item')
         document.querySelector('.postInfo').appendChild(p)
       } else {
         postInfo(info[post])
@@ -101,12 +115,14 @@
 
         const commentName = document.createElement('p')
         commentName.innerText = item.name
+        commentName.className = 'post-name'
 
         const commentBody = document.createElement('p')
         commentBody.innerText = item.body
-
+        commentBody.className = 'post-body'
         const commentEmail = document.createElement('p')
         commentEmail.innerText = item.email
+        commentEmail.className = 'post-email'
         comment.append(commentName, commentBody, commentEmail)
 
         document.querySelector('.comments').appendChild(comment)

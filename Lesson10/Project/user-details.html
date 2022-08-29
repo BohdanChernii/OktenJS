@@ -21,8 +21,8 @@
 </section>
 <script>
 
-  let user_id = window.location.search.split('?').join('')
-
+  let user_id = window.location.search.split('?id=').join('')
+  console.log(user_id);
   fetch(`https://jsonplaceholder.typicode.com/users/${user_id}`).then(response => response.json())
     .then(res => {
     const userInfo = (user) => {
@@ -54,11 +54,11 @@
             const postBody= document.createElement('p')
             postBody.innerText = item.body
 
-            const postTitle = document.createElement('h2')
+            const postTitle = document.createElement('h3')
             postTitle.innerText = item.title
 
             const link = document.createElement('a')
-            link.setAttribute('href', `post-details.html?${item.id}`)
+            link.setAttribute('href', `post-details.html?id=${item.id}`)
             link.innerText = 'go to post details'
             link.addEventListener("click", ()=>{
               console.log(item.id)

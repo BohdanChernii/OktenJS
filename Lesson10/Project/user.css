@@ -1,20 +1,22 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
 }
 
-body{
+body {
     max-width: 1400px;
     margin: auto;
 }
-.user{
+
+.user {
     width: 90%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     gap: 10%;
 }
-.userInfo{
+
+.userInfo {
     border: 1px solid black;
     width: 100%;
     display: flex;
@@ -23,27 +25,54 @@ body{
     background: orange;
     gap: 5%;
 }
-.userInfo>p{
-width: 150px;
-margin: auto;
-    margin-top:2%;
+
+.userInfo > p {
+    width: 150px;
+    margin: auto;
+    margin-top: 2%;
 
     color: white;
 }
-.getComments{
+
+.getComments {
     width: 100%;
     height: 100px;
-    margin-top:10%;
+    margin-top: 10%;
 }
-.posts{
+
+.posts {
     display: flex;
     flex-wrap: wrap;
     gap: 5%;
     width: 1400px;
 }
-.post{
+
+.post {
     border: 1px solid black;
-    width: 15%;
+    width: 200px;
+    height: 400px;
     margin-top: 5%;
-flex-grow: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.post > h3 {
+    width: 180px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.post > p {
+    width: 180px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.post > a{
+    margin-top: 50px;
 }
